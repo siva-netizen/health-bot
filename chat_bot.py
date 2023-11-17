@@ -6,16 +6,16 @@ from sklearn.model_selection import train_test_split
 import csv
 
 # Load data
-#training = pd.read_csv('Data/Training.csv')
-#cols = training.columns
-#cols = cols[:-1]
-#x = training[cols]
-#y = training['prognosis']
+training = pd.read_csv('Data/Training.csv')
+cols = training.columns
+cols = cols[:-1]
+x = training[cols]
+y = training['prognosis']
 
 # Preprocess data
 le = preprocessing.LabelEncoder()
-# le.fit(y)
-# y = le.transform(y)
+le.fit(y)
+y = le.transform(y)
 
 # x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=42)
 # clf1 = DecisionTreeClassifier()
