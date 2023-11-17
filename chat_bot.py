@@ -120,7 +120,7 @@ def main():
                 else:
                     st.warning(f"Symptom '{symptom}' not recognized.")
 
-             with open('health_clf.pkl', 'rb') as f:
+            with open('health_clf.pkl', 'rb') as f:
                 health_clf = pickle.load(f)
 
             second_prediction = health_clf.predict(symptoms_input_df)
