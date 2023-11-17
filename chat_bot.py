@@ -17,9 +17,9 @@ le = preprocessing.LabelEncoder()
 le.fit(y)
 y = le.transform(y)
 
-# x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=42)
-# clf1 = DecisionTreeClassifier()
-# clf = clf1.fit(x_train, y_train)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=42)
+clf1 = DecisionTreeClassifier()
+clf = clf1.fit(x_train, y_train)
 
 # Load additional data
 severityDictionary = dict()
@@ -120,10 +120,7 @@ def main():
                 else:
                     st.warning(f"Symptom '{symptom}' not recognized.")
 
-            with open('health_clf.pkl', 'rb') as f:
-                health_clf = pickle.load(f)
-
-            second_prediction = health_clf.predict(symptoms_input_df)
+            second_prediction = clf.predict(symptoms_input_df)
             present_disease = le.inverse_transform(second_prediction)
             st.write(f"You may have {present_disease[0]}")
             st.write(description_list[present_disease[0]])
